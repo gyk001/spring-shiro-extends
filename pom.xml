@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>cn.guoyukun</groupId>
 	<artifactId>spring-shiro</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>pom</packaging>
 	<name>Spring :: Shiro :: Extends</name>
 	<description>Spring :: Shiro :: Extends</description>
@@ -19,7 +19,7 @@
     <connection>scm:git:git@github.com:gyk001/spring-shiro.git</connection>
     <developerConnection>scm:git:git@github.com:gyk001/spring-shiro.git</developerConnection>
     <url>https://github.com/gyk001/spring-shiro</url>
-    <tag>HEAD</tag>
+    <tag>v0.0.1</tag>
   </scm>
   <issueManagement>
     <system>github</system>
