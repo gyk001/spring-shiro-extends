@@ -9,7 +9,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>spring-shiro-extends</artifactId>
-	<name>Spring :: JPA :: Search</name>
+	<name>Spring :: Shiro :: Extends</name>
 	<url>https://github.com/gyk001/spring-shiro</url>
 	<scm>
 		<connection>scm:git:git@github.com:gyk001/spring-shiro.git</connection>
