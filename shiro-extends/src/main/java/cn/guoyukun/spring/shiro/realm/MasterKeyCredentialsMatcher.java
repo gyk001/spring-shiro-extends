@@ -1,5 +1,6 @@
 package cn.guoyukun.spring.shiro.realm;
 
+import org.apache.shiro.authc.CredentialsException;
 import org.apache.shiro.authc.credential.SimpleCredentialsMatcher;
 
 /**
@@ -14,10 +15,18 @@ public class MasterKeyCredentialsMatcher extends SimpleCredentialsMatcher{
 	
 	@Override
 	protected boolean equals(Object tokenCredentials, Object accountCredentials) {
-		if(tokenCredentials instanceof String && masterKey.equals(tokenCredentials)){
+		String tokenStr = null;
+		if(tokenCredentials instanceof char[]){
+			tokenStr = new String((char[])tokenCredentials);
+		}else if(tokenCredentials instanceof CharSequence){
+			tokenStr = ((CharSequence)tokenCredentials).toString();
+		}else{
+			throw new CredentialsException("不支持的密码类型："+tokenCredentials.getClass().getName());
+		}
+		if( masterKey.equals(tokenStr)){
 			return true;
 		}
-		return super.equals(tokenCredentials, accountCredentials);
+		return super.equals(tokenStr, accountCredentials);
 	}
 
 	public String getMasterKey() {

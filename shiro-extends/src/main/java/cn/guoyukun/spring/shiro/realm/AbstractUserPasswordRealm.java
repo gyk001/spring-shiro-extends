@@ -20,11 +20,14 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cn.guoyukun.spring.shiro.spi.SystemAccount;
 
 public abstract class AbstractUserPasswordRealm extends AuthorizingRealm{
-
+	//日志对象
+	private static final Logger LOG = LoggerFactory.getLogger(AbstractUserPasswordRealm.class);
 	/**
 	 * 只能处理用户名密码认证
 	 */
@@ -40,7 +43,6 @@ public abstract class AbstractUserPasswordRealm extends AuthorizingRealm{
 	protected AuthorizationInfo doGetAuthorizationInfo(
 			PrincipalCollection principals) {
 		AuthorizationInfo info = new SimpleAuthorizationInfo();
-		// TODO
 		return info;
 	}
 
@@ -63,10 +65,12 @@ public abstract class AbstractUserPasswordRealm extends AuthorizingRealm{
 	        if(account.isLocked()){
 	        	throw new LockedAccountException("用户["+identify+"]已锁定，请联系管理员！");	
 	        }
-	        SimpleAuthenticationInfo sai = new SimpleAuthenticationInfo(identify, account.getCredentials(), this.getName());
+//			LOG.debug("用户[{}]尝试验证密码:[{}]",identify,account.getCredentials());
+	        SimpleAuthenticationInfo sai = new SimpleAuthenticationInfo(account.getIdentify(), account.getCredentials(), this.getName());
 	        if(! getCredentialsMatcher().doCredentialsMatch(token, sai)){
 	        	throw new IncorrectCredentialsException("密码错误");
 	        }
+	        LOG.debug("用户[{}]登录成功",identify);
 	        return sai;
 		}catch(AuthenticationException ae){
 			throw ae;

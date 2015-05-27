@@ -22,8 +22,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import cn.guoyukun.spring.shiro.Constants;
-
 /**
  * <p>绑定当前登录的用户</p>
  * <p>不同于@ModelAttribute</p>
@@ -33,14 +31,6 @@ import cn.guoyukun.spring.shiro.Constants;
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface CurrentUser {
-
-    /**
-     * 当前用户在request中的名字 默认{@link Constants#CURRENT_USER}
-     *
-     * @return
-     */
-    String user() default Constants.CURRENT_USER;
-    String userId() default Constants.CURRENT_USERID;
+public @interface CurrentAccount {
 
 }

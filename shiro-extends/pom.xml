@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>cn.guoyukun</groupId>
 		<artifactId>spring-shiro</artifactId>
-		<version>0.0.1</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>spring-shiro-extends</artifactId>
